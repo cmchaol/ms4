@@ -1,5 +1,7 @@
 * Dockerfile 
 
+** publishing
+
 | publishing                               |
 |------------------------------------------|
 | place the cursor inside the source block |
@@ -7,13 +9,18 @@
 | C-u C-c C-v t                            |
 
 
+** tag
+
 | tag    | git commands                     |
 |--------+----------------------------------|
 | add    |                                  |
 |        | git tag -a                       |
+|        |                                  |
 |        | git tag -m                       |
+|        |                                  |
 |        | git tag -a -m                    |
 |        |                                  |
+|        | M-x magit-tag-popup              |
 |--------+----------------------------------|
 | push   |                                  |
 |        | git push origin tag_name         |
@@ -26,6 +33,44 @@
 |        |                                  |
 |        | git tag --delete tagname         |
 
+
+** v.3
+
+#+HEADER:  :tangle Dockerfile
+#+BEGIN_SRC sh
+FROM c5766/gentoo-catalyst:v2
+
+RUN cd /usr/portage; \
+    rm -rf `ls -1A | grep -vP '^profiles'`
+#+END_SRC
+
+| publishing the above block |
+|                            |
+| M-x magit-tag-popup        |
+|                            |
+| git push                   |
+|                            |
+| observing autmoated build  |
+|                            |
+
+
+** v.2
+
+#+HEADER:  :tangle Dockerfile
+#+BEGIN_SRC sh
+FROM c5766/gentoo-catalyst:v.2
+#+END_SRC
+
+| publishing the above block |
+|                            |
+| M-x magit-tag-popup        |
+|                            |
+| git push                   |
+|                            |
+| observing autmoated build  |
+|                            |
+
+
 ** v.1
 
 #+HEADER:  :tangle Dockerfile
@@ -33,11 +78,12 @@
 FROM c5766/gentoo-catalyst:v2
 #+END_SRC
 
-
-
-
+Build failed: manifest for c5766/gentoo-catalyst:v2 not found
 
 
 * reference
 
 https://github.com/cmchaol/ms4
+
+https://hub.docker.com/r/pallavagarwal07/gentoo-stabilization/~/dockerfile/
+

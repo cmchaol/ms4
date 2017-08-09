@@ -1,2 +1,2 @@
 
-FROM c5766/gentoo-catalyst:v2
+FROM c5766/gentoo-catalyst:v.2
