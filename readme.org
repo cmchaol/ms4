@@ -38,13 +38,14 @@
 
 #+HEADER:  :tangle Dockerfile
 #+BEGIN_SRC sh
-FROM c5766/gentoo-catalyst:v2
+FROM c5766/gentoo-catalyst:v.2
 
 RUN cd /usr/portage; \
     rm -rf `ls -1A | grep -vP '^profiles'`
 #+END_SRC
 
 | publishing the above block |
+| C-u C-c C-v t              |
 |                            |
 | M-x magit-tag-popup        |
 |                            |
