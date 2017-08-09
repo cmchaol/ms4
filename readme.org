@@ -7,9 +7,12 @@
 | C-u C-c C-v t                            |
 
 
-| tag    | one                              |
+| tag    | git commands                     |
 |--------+----------------------------------|
-| add    | see below                        |
+| add    |                                  |
+|        | git tag -a                       |
+|        | git tag -m                       |
+|        | git tag -a -m                    |
 |        |                                  |
 |--------+----------------------------------|
 | push   |                                  |
@@ -18,13 +21,10 @@
 |--------+----------------------------------|
 | remove |                                  |
 |        | git push origin :tagname         |
-|        | (or)                             |
 |        |                                  |
 |        | git push --delete origin tagname |
-|        | (remote)                         |
 |        |                                  |
 |        | git tag --delete tagname         |
-|        | (local)                          |
 
 ** v.1
 
