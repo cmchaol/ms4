@@ -1,0 +1,43 @@
+* Dockerfile 
+
+| publishing                               |
+|------------------------------------------|
+| place the cursor inside the source block |
+|                                          |
+| C-u C-c C-v t                            |
+
+
+| tag    | one                              |
+|--------+----------------------------------|
+| add    | see below                        |
+|        |                                  |
+|--------+----------------------------------|
+| push   |                                  |
+|        | git push origin tag_name         |
+|        |                                  |
+|--------+----------------------------------|
+| remove |                                  |
+|        | git push origin :tagname         |
+|        | (or)                             |
+|        |                                  |
+|        | git push --delete origin tagname |
+|        | (remote)                         |
+|        |                                  |
+|        | git tag --delete tagname         |
+|        | (local)                          |
+
+** v.1
+
+#+HEADER:  :tangle Dockerfile
+#+BEGIN_SRC sh
+FROM c5766/gentoo-catalyst:v2
+#+END_SRC
+
+
+
+
+
+
+* reference
+
+https://github.com/cmchaol/ms4
