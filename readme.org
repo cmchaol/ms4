@@ -20,11 +20,12 @@
 |        |                                  |
 |        | git tag -a -m                    |
 |        |                                  |
-|        | M-x magit-tag-popup              |
+|        | M-x magit-tag                    |
 |--------+----------------------------------|
 | push   |                                  |
 |        | git push origin tag_name         |
 |        |                                  |
+|        | magit push a tag                 |
 |--------+----------------------------------|
 | remove |                                  |
 |        | git push origin :tagname         |
@@ -32,6 +33,51 @@
 |        | git push --delete origin tagname |
 |        |                                  |
 |        | git tag --delete tagname         |
+
+
+** gentoo/stage3-amd64-hardened Dockerfile
+
+https://hub.docker.com/r/gentoo/stage3-amd64-hardened/~/dockerfile/
+
+FROM busybox
+
+MAINTAINER Gentoo Docker Team
+
+# This one should be present by running the build.sh script
+ADD build.sh /
+
+RUN /build.sh amd64 x86_64 -hardened
+
+# Setup the rc_sys
+RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
+
+# By default, UTC system
+RUN echo 'UTC' > /etc/timezone
+
+
+** v.4
+
+#+HEADER:  :tangle Dockerfile
+#+BEGIN_SRC sh
+FROM c5766/gentoo-catalyst
+
+ADD build.sh /
+
+RUN /build.sh 
+#+END_SRC
+
+| publishing the above block |
+| C-u C-c C-v t              |
+|                            |
+| M-x magit-tag              |
+|                            |
+| git push master            |
+|                            |
+| git push a tag             |
+|                            |
+| observing autmoated build  |
+
+
 
 
 ** v.3
@@ -47,12 +93,13 @@ RUN cd /usr/portage; \
 | publishing the above block |
 | C-u C-c C-v t              |
 |                            |
-| M-x magit-tag-popup        |
+| M-x magit-tag              |
 |                            |
-| git push                   |
+| git push master            |
+|                            |
+| git push a tag             |
 |                            |
 | observing autmoated build  |
-|                            |
 
 
 ** v.2

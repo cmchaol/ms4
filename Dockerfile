@@ -1,5 +1,6 @@
 
-FROM c5766/gentoo-catalyst:v.2
+FROM c5766/gentoo-catalyst
 
-RUN cd /usr/portage; \
-    rm -rf `ls -1A | grep -vP '^profiles'`
+ADD build.sh /
+
+RUN /build.sh
