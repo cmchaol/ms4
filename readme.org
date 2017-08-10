@@ -55,9 +55,92 @@ RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 RUN echo 'UTC' > /etc/timezone
 
 
+** v.10 
+
+adjust build.sh
+
+download and unable to build without privileged operations
+
+docker build should support privileged operations #1916
+
+https://github.com/moby/moby/issues/1916
+
 ** v.9
 
 mkdir -p /root/catalyst/tmp/hardened
+
+# error
+
+2017-08-10 02:02:50 (52.4 MB/s) - '/root/catalyst/builds/default/stage3.spec' saved [240/240]
+
+[0m
+Catalyst, version 2.0.18
+Copyright 2003-2008 Gentoo Foundation
+Copyright 2008-2012 various authors
+Distributed under the GNU General Public License version 2.1
+
+Using command line specified Catalyst configuration file, /root/catalyst.conf
+Setting sharedir to config file value "/usr/lib64/catalyst"
+Setting snapshot_cache to config file value "/var/tmp/catalyst/snapshot_cache"
+Setting hash_function to config file value "crc32"
+Setting storedir to config file value "/root/catalyst"
+Setting portdir to config file value "/usr/portage"
+Setting distdir to config file value "/usr/portage/distfiles"
+Setting options to config file value "autoresume bindist kerncache pkgcache seedcache snapcache"
+Autoresuming support enabled.
+Binary redistribution enabled
+Kernel cache support enabled.
+Package cache support enabled.
+Seed cache support enabled.
+Snapshot cache support enabled.
+Envscript support enabled.
+Using target: stage1
+Building natively for amd64
+stage1 root path is /tmp/stage1root
+Source path set to /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+Caching snapshot to /var/tmp/catalyst/snapshot_cache/latest/
+The autoresume path is /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+stage1 stage path is /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/tmp/stage1root
+Location of the package cache is /root/catalyst/packages/hardened/stage1-amd64-hardened-latest/
+Location of the kerncache is /root/catalyst/kerncache/hardened/stage1-amd64-hardened-latest/
+Checking for processes running in chroot and killing them.
+
+--- Running action sequence: unpack
+
+
+Referenced SEEDCACHE does not appear to be a directory, trying to untar...
+No Valid Resume point detected, cleaning up...
+Removing AutoResume Points: ...
+Emptying directory /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+Emptying directory /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/
+
+Starting tar extract from /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+to /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/ (This may take some time) ...
+
+
+[91mtar: SELinux support is not available
+[0m
+--- Running action sequence: unpack_snapshot
+
+Cleaning up invalid snapshot cache at 
+	/var/tmp/catalyst/snapshot_cache/latest/ (This can take a long time)...
+
+Unpacking portage tree (This can take a long time) ...
+
+[91mtar: SELinux support is not available
+[0m
+lockfile does not exist '/var/tmp/catalyst/snapshot_cache/latest/.catalyst_lock'
+--- Running action sequence: setup_confdir
+--- Running action sequence: portage_overlay
+--- Running action sequence: base_dirs
+--- Running action sequence: bind
+
+[91mmount: permission denied
+[0m
+
+!!! catalyst: Couldn't bind mount /proc
+
+
 
 ** v.8
 

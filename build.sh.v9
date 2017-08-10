@@ -68,4 +68,4 @@ sed -i 's/^portage_confdir/# portage_confdir/' stage3.spec
 
 # run catalyst
 
-# catalyst -c $f2 -f stage1.spec && catalyst -f stage2.spec && catalyst -f stage3.spec
+catalyst -c $f2 -f stage1.spec && catalyst -f stage2.spec && catalyst -f stage3.spec
