@@ -34,11 +34,11 @@ wget $p1$p4 -O /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.b
 
 # mkdir -p /var/tmp/catalyst/snapshots/  # errors
 
-d="/var/tmp/catalyst/
+d="/var/tmp/catalyst/snapshot_cache"
 
-mkdir -p /var/tmp/catalyst/snapshots/
+mkdir -p $d
 
-wget -P /root/catalyst/snapshots http://distfiles.gentoo.org/snapshots/portage-latest.tar.bz2
+wget -P $d http://distfiles.gentoo.org/snapshots/portage-latest.tar.bz2
 
 
 # adjust Specs
