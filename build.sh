@@ -34,7 +34,9 @@ wget $p1$p4 -O /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.b
 
 # mkdir -p /var/tmp/catalyst/snapshots/  # errors
 
-d="/var/tmp/catalyst/snapshot_cache"
+# d="/var/tmp/catalyst/snapshot_cache"  # errors
+
+d="/root/catalyst/snapshots"
 
 mkdir -p $d
 

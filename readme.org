@@ -55,7 +55,46 @@ RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 RUN echo 'UTC' > /etc/timezone
 
 
+** v.7 adjust snapshot_cache
+
+/root/catalyst/snapshots
+
 ** v.6 adjust snapshot_cache
+
+/var/tmp/catalyst/snapshot_cache
+
+
+# errors
+
+Catalyst, version 2.0.18
+Copyright 2003-2008 Gentoo Foundation
+Copyright 2008-2012 various authors
+Distributed under the GNU General Public License version 2.1
+
+Using command line specified Catalyst configuration file, /root/catalyst.conf
+Setting sharedir to config file value "/usr/lib64/catalyst"
+Setting snapshot_cache to config file value "/var/tmp/catalyst/snapshot_cache"
+Setting hash_function to config file value "crc32"
+Setting storedir to config file value "/root/catalyst"
+Setting portdir to config file value "/usr/portage"
+Setting distdir to config file value "/usr/portage/distfiles"
+Setting options to config file value "autoresume bindist kerncache pkgcache seedcache snapcache"
+Autoresuming support enabled.
+Binary redistribution enabled
+Kernel cache support enabled.
+Package cache support enabled.
+Seed cache support enabled.
+Snapshot cache support enabled.
+Envscript support enabled.
+Using target: stage1
+Building natively for amd64
+stage1 root path is /tmp/stage1root
+Source path set to /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+Caching snapshot to /var/tmp/catalyst/snapshot_cache/latest/
+The autoresume path is /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+stage1 stage path is /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/tmp/stage1root
+
+!!! catalyst: Cannot locate specified snapshot_path: /root/catalyst/snapshots/portage-latest.tar.bz2
 
 ** v.5 adjust the directory to store snapshot
 
