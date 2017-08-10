@@ -55,9 +55,101 @@ RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 RUN echo 'UTC' > /etc/timezone
 
 
+** v.8
+
+#+HEADER:  :tangle Dockerfile
+#+BEGIN_SRC sh
+FROM c5766/gentoo-catalyst:v.2
+
+ADD build.sh /
+
+RUN /build.sh 
+#+END_SRC
+
+| publishing the above block |
+| C-u C-c C-v t              |
+|                            |
+| M-x magit-tag              |
+|                            |
+| git push master            |
+|                            |
+| git push a tag             |
+|                            |
+| observing autmoated build  |
+
+
+
+# test 1
+
+
+d="/tmp/test"
+
+mkdir $d
+
+cd $d
+
+
+f1="https://raw.githubusercontent.com/cmchaol/ms4/master/Dockerfile"
+
+f2="https://github.com/cmchaol/ms4/blob/master/build.sh"
+
+wget $f1
+
+wget $f2
+
+chmod +x build.sh
+
+https://docs.docker.com/engine/reference/commandline/build/#git-repositories
+
+
+# test 2
+
+cd $d
+
+u="https://github.com/cmchaol/ms4.git"
+
+docker build $u
+
+
+
+
+
 ** v.7 adjust snapshot_cache
 
 /root/catalyst/snapshots
+
+# errors
+
+Catalyst, version 2.0.18
+Copyright 2003-2008 Gentoo Foundation
+Copyright 2008-2012 various authors
+Distributed under the GNU General Public License version 2.1
+
+Using command line specified Catalyst configuration file, /root/catalyst.conf
+Setting sharedir to config file value "/usr/lib64/catalyst"
+Setting snapshot_cache to config file value "/var/tmp/catalyst/snapshot_cache"
+Setting hash_function to config file value "crc32"
+Setting storedir to config file value "/root/catalyst"
+Setting portdir to config file value "/usr/portage"
+Setting distdir to config file value "/usr/portage/distfiles"
+Setting options to config file value "autoresume bindist kerncache pkgcache seedcache snapcache"
+Autoresuming support enabled.
+Binary redistribution enabled
+Kernel cache support enabled.
+Package cache support enabled.
+Seed cache support enabled.
+Snapshot cache support enabled.
+Envscript support enabled.
+Using target: stage1
+Building natively for amd64
+stage1 root path is /tmp/stage1root
+Source path set to /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+Caching snapshot to /var/tmp/catalyst/snapshot_cache/latest/
+The autoresume path is /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+stage1 stage path is /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/tmp/stage1root
+
+!!! catalyst: Cannot locate specified distdir: /usr/portage/distfiles
+
 
 ** v.6 adjust snapshot_cache
 
@@ -95,6 +187,7 @@ The autoresume path is /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hard
 stage1 stage path is /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/tmp/stage1root
 
 !!! catalyst: Cannot locate specified snapshot_path: /root/catalyst/snapshots/portage-latest.tar.bz2
+
 
 ** v.5 adjust the directory to store snapshot
 
