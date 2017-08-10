@@ -55,6 +55,8 @@ RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 RUN echo 'UTC' > /etc/timezone
 
 
+** v.6 adjust snapshot_cache
+
 ** v.5 adjust the directory to store snapshot
 
 
