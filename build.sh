@@ -42,6 +42,13 @@ mkdir -p $d
 
 wget -P $d http://distfiles.gentoo.org/snapshots/portage-latest.tar.bz2
 
+# /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/
+
+d1="/root/catalyst/tmp/hardened"
+
+mkdir -p $d1
+
+
 
 # adjust Specs
 

@@ -55,6 +55,10 @@ RUN sed -e 's/#rc_sys=""/rc_sys="docker"/g' -i /etc/rc.conf
 RUN echo 'UTC' > /etc/timezone
 
 
+** v.9
+
+mkdir -p /root/catalyst/tmp/hardened
+
 ** v.8
 
 #+HEADER:  :tangle Dockerfile
@@ -78,39 +82,55 @@ RUN /build.sh
 | observing autmoated build  |
 
 
+Catalyst, version 2.0.18
+Copyright 2003-2008 Gentoo Foundation
+Copyright 2008-2012 various authors
+Distributed under the GNU General Public License version 2.1
 
-# test 1
+Using command line specified Catalyst configuration file, /root/catalyst.conf
+Setting sharedir to config file value "/usr/lib64/catalyst"
+Setting snapshot_cache to config file value "/var/tmp/catalyst/snapshot_cache"
+Setting hash_function to config file value "crc32"
+Setting storedir to config file value "/root/catalyst"
+Setting portdir to config file value "/usr/portage"
+Setting distdir to config file value "/usr/portage/distfiles"
+Setting options to config file value "autoresume bindist kerncache pkgcache seedcache snapcache"
+Autoresuming support enabled.
+Binary redistribution enabled
+Kernel cache support enabled.
+Package cache support enabled.
+Seed cache support enabled.
+Snapshot cache support enabled.
+Envscript support enabled.
+Using target: stage1
+Building natively for amd64
+stage1 root path is /tmp/stage1root
+Source path set to /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+Caching snapshot to /var/tmp/catalyst/snapshot_cache/latest/
+The autoresume path is /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+stage1 stage path is /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/tmp/stage1root
+Location of the package cache is /root/catalyst/packages/hardened/stage1-amd64-hardened-latest/
+Location of the kerncache is /root/catalyst/kerncache/hardened/stage1-amd64-hardened-latest/
+Checking for processes running in chroot and killing them.
 
+--- Running action sequence: unpack
 
-d="/tmp/test"
+Referenced SEEDCACHE does not appear to be a directory, trying to untar...
+No Valid Resume point detected, cleaning up...
+Removing AutoResume Points: ...
+Emptying directory /root/catalyst/tmp/hardened/.autoresume-stage1-amd64-hardened-latest/
+Emptying directory /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/
 
-mkdir $d
+Starting tar extract from /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2
+to /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/ (This may take some time) ...
 
-cd $d
+[91mtar: SELinux support is not available
+[0m
+[91mtar: ./bin: Directory renamed before its status could be extracted
+tar: Exiting with failure status due to previous errors
+[0m
 
-
-f1="https://raw.githubusercontent.com/cmchaol/ms4/master/Dockerfile"
-
-f2="https://github.com/cmchaol/ms4/blob/master/build.sh"
-
-wget $f1
-
-wget $f2
-
-chmod +x build.sh
-
-https://docs.docker.com/engine/reference/commandline/build/#git-repositories
-
-
-# test 2
-
-cd $d
-
-u="https://github.com/cmchaol/ms4.git"
-
-docker build $u
-
-
+!!! catalyst: Tarball extraction of /root/catalyst/builds/hardened/stage3-amd64-hardened-latest.tar.bz2 to /root/catalyst/tmp/hardened/stage1-amd64-hardened-latest/ failed.
 
 
 
